@@ -4,7 +4,6 @@ to predict the body mass of palmer penguins
 given their sex, species, and bill length in mm
 
 """
-import joblib
 import duckdb
 from palmerpenguins import penguins
 from pandas import get_dummies
@@ -22,5 +21,7 @@ y = df["body_mass_g"]
 
 model = LinearRegression().fit(X, y)
 
-
-joblib.dump(model, 'penguin_model.joblib')
+print(f"R^2 {model.score(X,y)}")
+print(f"Intercept {model.intercept_}")
+print(f"Columns {X.columns}")
+print(f"Coefficients {model.coef_}")
